@@ -226,7 +226,6 @@ def broadcast_block():
         response = {'message': 'Blockchain seems to be shorter, block not added'}
         return jsonify(response), 409
 
-/home/elmo/api_example
 @app.route('/transaction', methods=['POST'])
 @token_required
 def add_transaction(current_user):
