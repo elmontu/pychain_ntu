@@ -57,7 +57,7 @@ def token_required(f):
 
 @app.route('/user', methods=['POST'])
 @token_required
-def create_user():
+def create_user(current_user):
     data = request.get_json()
     hashed_password = generate_password_hash(data['password'], method='sha256')
     wallet.create_keys()
@@ -69,7 +69,7 @@ def create_user():
 
 @app.route('/user', methods=['GET'])
 @token_required
-def get_all_users():
+def get_all_users(current_user):
     users = User.query.all()
     output = []
     for user in users:
